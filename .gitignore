@@ -1,0 +1,12 @@
+.*.swp
+*.orig
+*.class
+a.out
+a.out
+garbage
+.DS_Store
+_build
+*.byte
+*.native
+*.aux
+*.log
