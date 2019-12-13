@@ -21,7 +21,7 @@ bool is_han_num(int num){
 int main()
 {
     int N;
-    int count;
+    int count = 0;
     cin >> N;
     for (int i = 1; i <= N; i++){
         if (is_han_num(i)) count++;
