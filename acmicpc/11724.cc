@@ -9,6 +9,7 @@ int main() {
 
   vector<int> edges[1000];
   bool check[1000] = {0, };
+  queue<int> q;
   int count = 0;
 
   scanf("%d %d", &n, &m);
@@ -22,16 +23,16 @@ int main() {
 
   for (int i = 0; i < n; i++) {
     if (!check[i]) {
-      queue<int> q;
       q.push(i);
+      check[i] = true;
       while (!q.empty()) {
         int idx = q.front();
         vector<int>* cur = edges + idx;
-        check[idx] = true;
         q.pop();
         for (vector<int>::iterator it = cur->begin(); it != cur->end(); ++it) {
           int idx = *it;
-          if (!check[*it]) {
+          if (!check[idx]) {
+            check[idx] = true;
             q.push(idx);
           }
         }
