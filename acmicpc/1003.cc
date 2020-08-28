@@ -1,32 +1,31 @@
-#include <iostream>
-
-using namespace std;
-
-int fn;
-int fn_1;
-int fn_2;
+#include <stdio.h>
 
 int main()
 {
-    int n;
-    cin >> n;
+  int n;
+  scanf("%d", &n);
 
-    while(n-->0) {
-        int k;
-        cin >> k;
-        if (k==0) cout << 1 << " " << 0 << endl;
-        else if (k==1) cout << 0 << " " << 1 << endl;
-        else {
-            fn_2 = 0;
-            fn_1 = 1;
-            fn = 1;
-            while(k-->2) {
-                fn_2 = fn_1;
-                fn_1 = fn;
-                fn = fn_2+fn_1;
-            }
-            cout << fn_1 << " " << fn << endl;
+  while(n-- > 0) {
+    int k;
+    int count_0_pprev, count_1_pprev;
+    int count_0_prev = 1, count_1_prev = 0;
+    int count_0 = 0, count_1 = 1;
+
+    scanf("%d", &k);
+    switch (k) {
+      case 0: count_0 = 1; count_1 = 0; break;
+      case 1: count_0 = 0; count_1 = 1; break;
+      default:
+        while (1 < k--) {
+          count_0_pprev = count_0_prev;
+          count_1_pprev = count_1_prev;
+          count_0_prev = count_0;
+          count_1_prev = count_1;
+          count_0 = count_0_pprev + count_0_prev;
+          count_1 = count_1_pprev + count_1_prev;
         }
     }
-    return 1;
+    printf("%d %d\n", count_0, count_1);
+  }
+  return 0;
 }
